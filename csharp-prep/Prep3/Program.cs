@@ -47,7 +47,8 @@ class Program
             else
             {
                 to_continue = "no";
-            }
+            } 
         }
     }
 }
+// Error happening, adding this to see if help with git hub
