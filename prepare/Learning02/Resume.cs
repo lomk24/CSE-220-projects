@@ -2,11 +2,11 @@ public class Resume
 {
     public string _name;
 
-    public List<Jobs> _jobs = new List<Jobs>();
+    public List<Job> _jobs = new List<Job>();
 
     public void Display()
     {
-        foreach (Jobs job in _jobs)
+        foreach (Job job in _jobs)
         {
             job.Display();
         }
