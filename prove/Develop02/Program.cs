@@ -9,10 +9,10 @@ class Program
         int num;
         string write = "";
         JournalEntry journalEntry = new JournalEntry();
+        
         do
         {
-            Journal journal1 = new Journal();
-            journal1.Display();
+            Journal.Display();
             string choice = Console.ReadLine();
             num = int.Parse(choice);
         
@@ -54,7 +54,8 @@ class Program
                 Console.WriteLine($"\n{line}");
                 count++;
             }
-            Console.WriteLine($"\nThere are {count} entries. Keep up the good work!!!");
+            Console.WriteLine($"\nThere are {count} entries.");
+            Journal.GiveMotivation();
         }
         else
         {

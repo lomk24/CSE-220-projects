@@ -5,11 +5,11 @@ using System.Security.Cryptography;
 
 public class Journal
 {
-    public string _startUp = "1. Write \n2. Display \n3. Load \n4. Save \n5. Quit";
-    public string _options = "\nWhat do you want to do?";
-    public string randomPrompt;
+    public static string _startUp = "1. Write \n2. Display \n3. Load \n4. Save \n5. Quit";
+    public static string _options = "\nWhat do you want to do?";
+    public static string randomPrompt;
 
-    public void Display()
+    public static void Display()
     {
         Console.Write($"\n{_startUp}\n{_options} ");
     }
@@ -23,6 +23,25 @@ public class Journal
             "What was the strongest emotion I felt today?", 
             "If I had one thing I could do over today, what would it be?"
         };
+
+    public static List<string> _motivationlist = new List<string> 
+        {
+            "Keep up the good work!",
+            "You're doing great!",
+            "Keep going!",
+            "Keep trying to write each day!",
+            "Remember, even just few lines each day is a good thing!"
+        };
+
+    public static void GiveMotivation()
+    {
+        int l = _motivationlist.Count;
+        Random r = new Random();
+        int num = r.Next(l);
+        var randomPrompt = _motivationlist[num];
+
+        Console.WriteLine($"\n{randomPrompt}");
+    }
 
     public static void ShowPrompts()
     {

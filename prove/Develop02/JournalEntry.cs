@@ -13,10 +13,6 @@ public class JournalEntry
         _theEntry.Add($"{dateTime()}: {entry}");
     }
 
-    public void LoadEntries(List<string> entries)
-    {
-    _theEntry.AddRange(entries);
-    }
 
     public void Display()
     {
@@ -25,7 +21,7 @@ public class JournalEntry
             Console.WriteLine($"\n{entry}");
         }
     }
-    public string dateTime()
+    public static string dateTime()
     {
         DateTime theCurrentTime = DateTime.Now;
         string dateText = theCurrentTime.ToShortDateString();
