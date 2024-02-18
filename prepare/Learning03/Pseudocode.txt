@@ -1,0 +1,29 @@
+OPEN Json file as a read-only for texual input
+READ Json file as a full line of text from the file
+CLOSE file
+
+
+PUT instructions on screen
+PROMPT for search number
+
+answer <- PROMPT
+
+numbersList <- list of number from Json file
+
+
+function searchOfJsonFile(numbersList, answer)
+
+    beggining <- 0
+    end <- numberListMax Index
+
+    while not answer
+        middleIndex <- beggining + (beggining - end) // 2
+        halfWay <- num//2
+        if halfway[middleIndex] == answer
+            return middleIndex
+        else if halfway[middleIndex] < answer
+            beggining <- middleIndex + 1
+        else:
+            right = middleIndex -1 
+
+    return <- the number was not found
