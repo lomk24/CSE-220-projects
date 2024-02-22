@@ -12,7 +12,6 @@ class Program
 
         Scripture scripture = new Scripture();
 
-
         while (addScripture != 5)
         {
             Console.Write("Do you want to add a scripture to the list? Yes = 1, No = 5: ");
