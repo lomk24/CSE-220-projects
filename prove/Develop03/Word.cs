@@ -1,8 +1,16 @@
 
  class Word
     {
-        public string Text { get; set;}
-        public bool IsHidden { get; private set; }
+        public string Text 
+        { 
+            get; 
+            set;
+        }
+        public bool IsHidden 
+        { 
+            get; 
+            private set; 
+        }
 
         public Word(string text)
         {

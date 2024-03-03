@@ -9,7 +9,7 @@ abstract class MindfulnessGame
     public abstract void Play(); // Abstract method
 
     // Method to display loading animation
-    protected void LoadingAnimation(String message = "Loading")
+    protected virtual void LoadingAnimation(String message = "Loading")
     {
         Console.Clear();
         int elapsed = 0;
@@ -66,6 +66,41 @@ class Game2 : MindfulnessGame
         Console.WriteLine("Refelecation Activity completed! Press [Enter] to continue.");
         Console.ReadLine();
     }
+    
+    protected override void LoadingAnimation(string message = "Thinking")
+    {
+        Console.Clear();
+        int elapsed = 0;
+        string[] emojis = { "✏️ ", "✍️ ", "📝 " };
+        // string[] emojis = { "1", "2", "3" }; // Emojis as Unicode code points
+        int emojiIndex = 0;
+
+        Console.OutputEncoding = Encoding.UTF8;
+
+        while (elapsed < gameDuration)
+        {
+            Console.WriteLine(message);
+            for (int i = 0; i <= emojiIndex; i++)
+            {
+                Console.Write(emojis[i]);
+                Thread.Sleep(300);
+            }
+
+            if (emojiIndex == emojis.Length - 1)
+            {
+                Console.Clear();
+                emojiIndex = -1; // Reset emojiIndex to -1 after clearing the screen
+            }
+            else
+            {
+                emojiIndex++;
+            }
+
+
+            elapsed += 1200;
+            Console.Clear();
+        }
+    }
 }
 
 // Derived class for Game 3 (inheritance)
@@ -88,6 +123,7 @@ class Game3 : MindfulnessGame
 
     private void CountdownTimer()
     {
+
         int timeRemaining = gameDuration / 1000; // Convert milliseconds to seconds
         while (timeRemaining > 0)
         {   

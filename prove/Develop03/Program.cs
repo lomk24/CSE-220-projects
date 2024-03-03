@@ -34,6 +34,7 @@ class Program
 
                 scripture.AddReference(referenceComplete);
                 scripture.AddVerses(verses);
+            }
 
         scripture.AddReference(
             "1 Nephi 1:1");
@@ -49,7 +50,7 @@ they thirst; yea, and he also gave them strength, that they should suffer no man
 save it were swallowed up in the joy of Christ. Now this was according to the prayer of Alma; and this 
 because he prayed in faith.");
 
-        scripture.Display();
+        }
 
         while (!scripture.AllWordsHidden)
         {
@@ -63,7 +64,5 @@ because he prayed in faith.");
 
         }
     
-            }
-    }
     }
 }
