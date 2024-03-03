@@ -25,7 +25,7 @@ public class ReflectionActivity : Activity
     private List<int> _chosenReflection = new List<int>(); 
     private Random _random = new Random();
     int number;
-    public ReflectionActivity(string directions, int lengthofTime) : base(directions, lengthofTime)
+    public ReflectionActivity(string directions, int lengthofTime, string name) : base(directions, lengthofTime, name)
     {
         
     }
@@ -34,72 +34,59 @@ public class ReflectionActivity : Activity
     private bool _notIn2 = true;
     public override void Play()
     {
-        Console.Clear();
+        Thread.Sleep(5000);
         LoadingAnimation();
     }
 
     private string GetRandomQuestion()
     {
-        while(_notIn1 == true)
+        if(_chosenQuestions.Count() == _questionPrompts.Count())
+        {
+            return "That is all the questions";
+        }
+
+        do
         {
             number = _random.Next(_questionPrompts.Count());
-            if(_chosenQuestions.Contains(number))
-            {
-                number = _random.Next(_questionPrompts.Count());             
-            }
-            else if(_chosenQuestions.Count() == _questionPrompts.Count())
-            {
-                string prompt = ("That is all the questions");
-                return prompt;
-            }
-            else
-            {
-               _notIn1 = false; 
-            }
         }
-        _chosenQuestions.Add(number);
-        string prompt1 = _questionPrompts[number];
+        while(_chosenQuestions.Contains(number));
 
-        return prompt1;
+        _chosenQuestions.Add(number);
+        return _questionPrompts[number];
+
     }
 
-    private string GetRandomReflection()
-        {
-        while(_notIn2 == true)
-        {
-            number = _random.Next(_reflectionPrompts.Count);
-            if(_chosenReflection.Contains(number))
-            {
-                number = _random.Next(_reflectionPrompts.Count);             
-            }
-            else if(_chosenReflection.Count() == _reflectionPrompts.Count())
-            {
-                string prompt = ("That is all the reflections");
-                return prompt;
-            }
-            else
-            {
-               _notIn2 = false; 
-            }
-        }
-        _chosenReflection.Add(number);
-        string prompt1 = _reflectionPrompts[number];
 
-        return prompt1;
+    private string GetRandomReflection()
+    {
+                if(_chosenReflection.Count() == _reflectionPrompts.Count())
+        {
+            return "That is all the questions";
+        }
+        do
+        {
+            number = _random.Next(_reflectionPrompts.Count());
+        }
+        while(_chosenReflection.Contains(number));
+
+        _chosenReflection.Add(number);
+        return _reflectionPrompts[number];
+
     }
 
     private void LoadingAnimation()
     {
         Console.Clear();
         int timeElapsed = GetTimer();
-        int questionTime = 0;
-        int reflectionTime = 0;
-        while (timeElapsed < 0)
+
+        while (timeElapsed > 0)
         {
+            int questionTime = 0;
+            int reflectionTime = 0;
             string questioner = GetRandomQuestion();
             string reflect = GetRandomReflection();
             
-            while (questionTime < 5000)
+            while (questionTime < 10000)
             {
                 Console.WriteLine($"{questioner}...\\");
                 Thread.Sleep(625);
@@ -118,31 +105,30 @@ public class ReflectionActivity : Activity
                 questionTime += 625;
                 Console.Clear();
             }
-            timeElapsed -= 5;
 
-            while(reflectionTime < 15000)
+            timeElapsed -= 10;
+
+            while(reflectionTime < 10000)
             {
                 Console.WriteLine($"{reflect}...\\");
                 Thread.Sleep(625);
-                questionTime += 625;
+                reflectionTime+= 625;
                 Console.Clear();
                 Console.WriteLine($"{reflect}...|");
                 Thread.Sleep(625);
-                questionTime += 625;
+                reflectionTime += 625;
                 Console.Clear();
                 Console.WriteLine($"{reflect}.../");
                 Thread.Sleep(625);
-                questionTime += 625;
+                reflectionTime += 625;
                 Console.Clear();
                 Console.WriteLine($"{reflect}...-");
                 Thread.Sleep(625);
-                questionTime += 625;
-                Console.Clear();
-                
+                reflectionTime += 625;
+                Console.Clear();            
             }
-            timeElapsed -= 15;
+            timeElapsed -= 20;
         }
-        GetFeedback();
     }
 
 }

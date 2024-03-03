@@ -17,16 +17,26 @@ public abstract class Activity
     private Random _random = new Random();
     public abstract void Play();
 
-    public Activity(string instructions, int lengthofTime)
+    public Activity(string instructions, int lengthofTime, string name)
     { 
         _directions = instructions;
         _lengthofTime = lengthofTime;
+        _activity = name;
     }
 
+    public string GetBasicStart()
+    {
+        Console.Clear();
+        return basicStart;
+    }
     
     public string GetInstrucions()
     {
         return _directions;
+    }
+    public string GetName()
+    {
+        return _activity;
     }
     public int GetTimer()
     {
@@ -46,8 +56,10 @@ public abstract class Activity
 
     public void DisplayFeedback()
     {
+        Console.Clear();
         string positiveFeedback = GetRandom();
-        Console.WriteLine($"You did {_activity} for {_lengthofTime}");
+        Console.WriteLine($"You did the {_activity} for {_lengthofTime} seconds");
         Console.WriteLine($"{positiveFeedback}");
+        Thread.Sleep(5000);
     }
 }

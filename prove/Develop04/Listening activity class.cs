@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
 
-public  class ListiningActivity : Activity
+public  class ListingActivity : Activity
 {
     private bool _notChosen = true;
     private Random _rand = new Random();
@@ -13,7 +13,7 @@ public  class ListiningActivity : Activity
     string prompt;
 
     int number;
-    public ListiningActivity(string directions, int lengthofTime, string feedback) : base(directions, lengthofTime, feedback)
+    public ListingActivity(string directions, int lengthofTime, string name) : base(directions, lengthofTime, name)
     {
     }
 
@@ -28,27 +28,11 @@ public  class ListiningActivity : Activity
 
     private string GetRandomPrompt()
     {
-        while(_notChosen == true);
-        {
-            number = _rand.Next(_prompts.Count);
-            if(_usedPrompts.Contains(number))
-            {
-                number = _rand.Next(_prompts.Count());
-            }
-            else if(_prompts.Count() == _usedPrompts.Count())
-            {
-                Console.WriteLine("That is all the questions");
-            }
-            else
-            {
-                _notChosen = false;
-            }
-            _usedPrompts.Add(number);
-            prompt = _prompts[number];
+        number = _rand.Next(_prompts.Count);
+        _usedPrompts.Add(number);
+        prompt = _prompts[number];
 
-            return prompt;
-
-        }
+        return prompt;
     }
 
     private void LoadingAnimation()
@@ -59,28 +43,27 @@ public  class ListiningActivity : Activity
         Console.Clear();
         Console.WriteLine("Ready?");
         Thread.Sleep(1000);
-        timeElapsed -= 1;
 
         var stopwatch = new Stopwatch();
         stopwatch.Start();
 
-        string prompter = GetRandomPrompt();
+        string prompt = GetRandomPrompt();
         while(countDown1 > 0)
         {
             Console.WriteLine($"{prompt}");
-            Console.WriteLine($"{countDown1}");
+            Console.WriteLine($"...{countDown1}");
             Thread.Sleep(1000);
             countDown1--;
-            Console.WriteLine($"{countDown1}");
+            Console.WriteLine($"...{countDown1}");
             countDown1--;
             Thread.Sleep(1000);
-            Console.WriteLine($"{countDown1}");
+            Console.WriteLine($"...{countDown1}");
             countDown1--;
             Thread.Sleep(1000);
-            Console.WriteLine($"{countDown1}");
+            Console.WriteLine($"...{countDown1}");
             countDown1--;
             Thread.Sleep(1000);
-            Console.WriteLine($"{countDown1}");
+            Console.WriteLine($"...{countDown1}");
             countDown1--;
         }
     
@@ -98,11 +81,11 @@ public  class ListiningActivity : Activity
     {
         int counted = _wordList.Count();
         Console.WriteLine($"Congragulations, you wrote {counted} items!");
+        Thread.Sleep(5000);
     }
     public override void Play()
     {
         Console.Clear();
         LoadingAnimation();
-        Display();
     }
 }

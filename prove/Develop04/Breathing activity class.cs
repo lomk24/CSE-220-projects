@@ -1,12 +1,12 @@
 public class BreathingActivity : Activity
 {
-    public BreathingActivity(string directions, int lengthofTime) : base(directions, lengthofTime)
+    public BreathingActivity(string directions, int lengthofTime, string name) : base(directions, lengthofTime, name)
     {
         
     }
     public override void Play()
     {
-        Console.Clear();
+        Thread.Sleep(5000);
         LoadingAnimation();
     }
     private void LoadingAnimation()
@@ -16,37 +16,40 @@ public class BreathingActivity : Activity
         while (timeElapsed > 0)
         {
             Console.Clear();
-            Console.Write("Breath in...");
-            Console.WriteLine($"...{countUp}");                 
+            Console.WriteLine("Breath in");
+            Thread.Sleep(1000);
+            Console.WriteLine($"> {countUp}");                 
             timeElapsed -= 1;
             countUp += 1;
             Thread.Sleep(1000);
-            Console.WriteLine($"...{countUp}");
+            Console.WriteLine($"> {countUp}");
             timeElapsed -= 1;
             countUp += 1;
             Thread.Sleep(1000);
-            Console.WriteLine($"...{countUp}");
+            Console.WriteLine($"> {countUp}");
             timeElapsed -= 1;
             countUp += 1;
+            Thread.Sleep(1000);
             
-            Console.Write("Breath out...");
-            Console.WriteLine($"...{countUp}");                 
+            Console.WriteLine("\nBreath out");
+            Thread.Sleep(1000);
+            Console.WriteLine($"> {countUp}");                 
             timeElapsed -= 1;
             countUp += 1;
             Thread.Sleep(1000);
-            Console.WriteLine($"...{countUp}");
+            Console.WriteLine($"> {countUp}");
             timeElapsed -= 1;
             countUp += 1;
             Thread.Sleep(1000);
-            Console.WriteLine($"...{countUp}");
+            Console.WriteLine($"> {countUp}");
             timeElapsed -= 1;
             countUp += 1;
             Thread.Sleep(1000);
-            Console.WriteLine($"...{countUp}");
+            Console.WriteLine($"> {countUp}");
             timeElapsed -= 1;
             countUp += 1;
             Thread.Sleep(1000);
-            Console.WriteLine($"...{countUp}");
+            Console.WriteLine($"> {countUp}");
             timeElapsed -= 1;
             countUp += 1;
             Thread.Sleep(1000);
