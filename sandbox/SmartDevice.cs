@@ -16,9 +16,8 @@ public abstract class SmartDevice
     private string _name;
     Stopwatch stopwatch = new Stopwatch();
 
-    public SmartDevice(int time, string name)
+    public SmartDevice(string name)
     {
-        _time = time;
         _name = name;
     }
 
@@ -69,7 +68,7 @@ public class SmartLight : SmartDevice
     private string[] _colorsArray = {"White", "Red", "Blue", "Green", "Yellow", "Orange", "Purple"};
 
 
-    public SmartLight(int time, string name, int bright, string color) : base(time, name)
+    public SmartLight(string name, int bright, string color) : base(name)
     {
         bright = _brightness;
         color = _colors;
@@ -78,6 +77,11 @@ public class SmartLight : SmartDevice
     public int GetBrightness()
     {
         return _brightness;
+    }
+
+    public string GetColor()
+    {
+        return _colors;
     }
     public override string StatusReport()
     {
@@ -138,7 +142,7 @@ public class SmartTV : SmartDevice
     private int _channel;
     string report; 
 
-    public SmartTV(int time, string name, int channel) : base(time, name)
+    public SmartTV(string name, int channel) : base(name)
     {
         channel = _channel;
     }
@@ -150,7 +154,7 @@ public class SmartTV : SmartDevice
 
     public override string StatusReport()
     {
-        string report = "";
+        report = "";
         bool change = GetStatus();
         int whatChannel = GetChannel();
 
