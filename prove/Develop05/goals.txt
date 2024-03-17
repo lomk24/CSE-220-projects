@@ -1,0 +1,4 @@
+200
+SimpleGoal: did I do the thing?,hopefully I did the thing right,20,False
+EternalGoal: to have finished everything that I need to,what I said above,100
+ChecklistGoal: this is the goal,thie is the goals goal,100,200,3,0
