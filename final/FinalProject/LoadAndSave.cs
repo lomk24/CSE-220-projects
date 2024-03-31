@@ -34,7 +34,7 @@ public class LoadAndSave
 
         foreach(var diction in dictionary)
         {
-            Console.WriteLine($"{diction.Key}: {diction.Value}")
+            Console.WriteLine($"{diction.Key}: {diction.Value}");
         }
     }
 }
