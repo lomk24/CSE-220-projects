@@ -5,53 +5,41 @@ using System.Diagnostics.Contracts;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
+using System.Xml.Linq;
 
 class Program
 {
     static void Main(string[] args)
     {
         Console.WriteLine("Hello, welcome to the Performance Tracker!\n"); 
-        Console.WriteLine("Would you like an explanation of how to run this Program? (y/n)");
-        string tutorial = Console.ReadLine();
-        
-        
-        switch(tutorial)
-        {
-            case "y":
-            break;
 
-            case "n":
-            break;
-        }
-        
         bool done = false;
-
+        CreateNew newGame = new CreateNew();
         while(done == false)
         {   
             // Console.Clear();
             Console.WriteLine("What would you like to do?\n");
             Console.WriteLine("1. Create New Tracker");
             Console.WriteLine("2. Load Tracker");
-            Console.WriteLine("3. Save Tracker");
-            Console.WriteLine("4. Edit Tracker");
-            Console.WriteLine("5. Play Tracker");
-            Console.WriteLine("6. Quite");
+            Console.WriteLine("3. Edit Tracker");
+            Console.WriteLine("4. Play Tracker");
+            Console.WriteLine("5. Quite\n");
 
             string choice = Console.ReadLine();
             bool choiceDone = false;
-            bool subCategoryDone = false;
 
             switch(choice)
             {
                 case "1":
-                CreateNew newGame = new CreateNew();
+                Console.Clear();
 
                 while(choiceDone == false)
                 {
+                    bool subCategoryDone = false;
                     Console.Write("Name of New Category: ");
                     string newName = Console.ReadLine();
 
-                    Console.Write("\nWould you like to add a subcategory? (y/n): ");
+                    Console.Write("Would you like to add a subcategory? (y/n): ");
                     string addingSubcategories = Console.ReadLine();
 
                     switch(addingSubcategories)
@@ -60,9 +48,9 @@ class Program
                             while(subCategoryDone == false)
                             {
                                 bool theFocus = false;
-                                Console.Write("Name of New SubCategory: ");
+                                Console.Write("\n> Name of New SubCategory: ");
                                 string newSubCategoryName = Console.ReadLine();
-                                Console.Write("Assign Button to SubCategory: ");
+                                Console.Write("> Assign Button to SubCategory: ");
                                 string subAssingedButton = Console.ReadLine();
                                 Console.Write("Is this subcategory the focus of this category? (y/n): ");
                                 string decidingTheFocus = Console.ReadLine();
@@ -107,8 +95,6 @@ class Program
                             else if(createMore == "n")
                             {
 
-                                // AddSaveFunction
-
                                 choiceDone = true;
                             }
 
@@ -122,7 +108,7 @@ class Program
                             Category noSubCategory = new Category(newName, assignedButtonNoSub, 0);
                             string name = noSubCategory.GetName();
                             string numberAndButton = noSubCategory.GetDictionaryFormat();
-                            newGame.AddToDictioanry(name, numberAndButton);
+                            newGame.AddToDictioanry($"~{name}", $"{numberAndButton}");
 
                             Console.WriteLine("Do you want to make another Category? (y/n): ");
                             string createMore2 = Console.ReadLine();
@@ -134,31 +120,58 @@ class Program
 
                             else if(createMore2 == "n")
                             {
-
-                                // AddSaveFunction
-
                                 choiceDone = true;
-                                
                             }           
                         break;
                     }
                 }
-                newGame.DisplayDictionary();
+                Dictionary<string,string> GetDictionary = newGame.GetMyDictionary();
+                
+                Console.Clear();
+                Console.WriteLine("Save Options");
+                Console.WriteLine("    1. Create new file");
+                Console.WriteLine("    2. Save to existing file");
+                Console.Write("\nHow would you like to save the Game?: ");
+                string saveOption = Console.ReadLine();
+
+                Console.Write("What is the Name of the File?: ");
+                string theFileName = Console.ReadLine();
+
+                LoadAndSave saveGame = new LoadAndSave(theFileName);
+                switch(saveOption)
+                {
+                    case "1":
+                        saveGame.CreateNewFile(GetDictionary);
+                    break;
+
+                    case "2":
+                        saveGame.SaveFile(GetDictionary);
+                    break;
+
+                    // Throw in exception catcher
+                }
+
                 break;
     
                 case "2":
+                Console.Clear();
+                Console.Write("What file do you want to load?: ");
+                string loadFileName = Console.ReadLine();
+                LoadAndSave load = new LoadAndSave(loadFileName);
+                load.LoadGame(newGame);
+                // newGame.DisplayDictionary();
                 break;
 
                 case "3":
                 break;
 
                 case "4":
+                Play letsPlayAGame = new Play();
+                letsPlayAGame.StartGame(newGame);
                 break;
 
                 case "5":
-                break;
-
-                case "6":
+                done = true;
                 break;
 
             }

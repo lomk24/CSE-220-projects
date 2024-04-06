@@ -1,0 +1,3 @@
+Kills:ShotGun,s,0,False,True/Rifle,r,0,False,False/
+~Deaths:d, 0
+~Push-Ups:p, 0

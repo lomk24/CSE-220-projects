@@ -1,0 +1,2 @@
+~Push-ups:p, 0
+Arm workout:Curls,c,0,False,True/
