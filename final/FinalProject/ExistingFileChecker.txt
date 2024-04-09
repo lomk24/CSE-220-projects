@@ -1,3 +1,4 @@
-Kills:ShotGun,s,0,False,True/Rifle,r,0,False,False/
-~Deaths:d, 0
-~Push-Ups:p, 0
+Kills:ShotGun,s,0,False,True/Rifle,r,0,False,False/Grenade,g,0,False,False/
+~Category5:5, 0
+Gaterade:pucnes,t,0,False,True/pulse,p,0,False,False/Bang,b,0,False,False/
+band:awesome,q,0,False,False/

@@ -7,7 +7,7 @@ public class CreateNew
 {
     public List<string> multipleSubCategoryHolder = new List<string>();
     private Dictionary<string, string> categoriesDictionary = new Dictionary<string, string>();
-
+    
     public void AddToDictioanry(string key, string value)
     {
         categoriesDictionary.Add(key, value);
@@ -32,6 +32,10 @@ public class CreateNew
         multipleSubCategoryHolder.Clear();
     }
 
+    public void DeleteDictionary()
+    {
+        categoriesDictionary.Clear();
+    }
     public void DisplayDictionary()
     {
         foreach(KeyValuePair<string, string> i in categoriesDictionary)

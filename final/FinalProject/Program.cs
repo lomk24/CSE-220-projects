@@ -163,9 +163,38 @@ class Program
                 break;
 
                 case "3":
-                break;
+                    Edit edit = new Edit();
+                    
+                    edit.Editer(newGame);
+
+                    Dictionary<string,string> GetDictionary2 = newGame.GetMyDictionary();
+
+                    Console.Clear();
+                    Console.WriteLine("Save Options");
+                    Console.WriteLine("    1. Create new file");
+                    Console.WriteLine("    2. Save to existing file");
+                    Console.Write("\nHow would you like to save the Game?: ");
+                    string saveOption2 = Console.ReadLine();
+
+                    Console.Write("What is the Name of the File?: ");
+                    string theFileName2 = Console.ReadLine();
+
+                    LoadAndSave saveGame2 = new LoadAndSave(theFileName2);
+                    switch(saveOption2)
+                    {
+                        case "1":
+                            saveGame2.CreateNewFile(GetDictionary2);
+                        break;
+
+                        case "2":
+                            saveGame2.SaveFile(GetDictionary2);
+                        break;
+                    }
+
+                    break;
 
                 case "4":
+                Console.Clear();
                 Play letsPlayAGame = new Play();
                 letsPlayAGame.StartGame(newGame);
                 break;

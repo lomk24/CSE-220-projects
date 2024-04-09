@@ -1,0 +1,2 @@
+Category checker':checker check,d,0,False,True/checky check,c,0,False,False/
+CHecky chek:checky check check,r,0,False,True/

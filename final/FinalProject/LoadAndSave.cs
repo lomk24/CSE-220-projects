@@ -52,6 +52,7 @@ public class LoadAndSave
         string theFile = GetFileName();
         using(StreamReader read = new StreamReader(theFile))
         {
+            loader.DeleteDictionary();
             string line;
             while((line = read.ReadLine()) != null)
             {
