@@ -196,6 +196,7 @@ class Program
                 case "4":
                 Console.Clear();
                 Play letsPlayAGame = new Play();
+                letsPlayAGame.ResetGame();
                 letsPlayAGame.StartGame(newGame);
                 break;
 

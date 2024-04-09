@@ -38,33 +38,49 @@ public class LoadAndSave
 
     public void SaveFile(Dictionary<string,string> dictionary)
     {
-        string theFile = GetFileName();
-        using(StreamWriter outPutFile = new StreamWriter(theFile))
-        
-        foreach(var diction in dictionary)
+        try
         {
-            outPutFile.WriteLine($"{diction.Key}:{diction.Value}");
+            string theFile = GetFileName();
+            using(StreamWriter outPutFile = new StreamWriter(theFile))
+
+            foreach(var diction in dictionary)
+            {
+                outPutFile.WriteLine($"{diction.Key}:{diction.Value}");
+            }
         }
+        catch(Exception)
+        {
+            Console.WriteLine("File not found");
+        }
+        
+
         
     }
     public void LoadGame(CreateNew loader)
     {
-        string theFile = GetFileName();
-        using(StreamReader read = new StreamReader(theFile))
+        try
         {
-            loader.DeleteDictionary();
-            string line;
-            while((line = read.ReadLine()) != null)
+            string theFile = GetFileName();
+            using(StreamReader read = new StreamReader(theFile))
             {
-                string[] parts = line.Split(":");
-                if(parts.Length == 2)
+                loader.DeleteDictionary();
+                string line;
+                while((line = read.ReadLine()) != null)
                 {
-                    string key = parts[0];
-                    string value = parts[1];
+                    string[] parts = line.Split(":");
+                    if(parts.Length == 2)
+                    {
+                        string key = parts[0];
+                        string value = parts[1];
 
-                    loader.AddToDictioanry(key, value);
-                }  
+                        loader.AddToDictioanry(key, value);
+                    }  
+                }
             }
+        }
+        catch(Exception)
+        {
+            Console.WriteLine("File not found");
         }
     }
 

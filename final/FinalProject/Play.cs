@@ -28,6 +28,14 @@ public class Play
         // Add way to pause the game
     }
 
+    public void ResetGame()
+    {
+        gameOver = false;
+        game.Clear();
+        buttonPressTimes.Clear();
+        finalResults.Clear();
+        stopwatch.Reset();
+    }
     static void Update()
     {
         DictionaryDisplayFormat();
@@ -146,9 +154,6 @@ public class Play
         PrintFinal();
         CalculateTheGame calculate = new CalculateTheGame();
         calculate.Calculations(buttonPressTimes, finalResults);
-        game.Clear();
-        buttonPressTimes.Clear();
-        finalResults.Clear();
     }
     
 
@@ -303,17 +308,6 @@ public class Play
             }
         }
     }
+
 }
-    // static int GetMaxFirstPartLength(List<string[]> items)
-    // {
-    //     int maxLength = 0;
-    //     foreach(string[] item in items)
-    //     {
-    //         int length = item[0].Length;
-    //         if(length > maxLength)
-    //         {
-    //             maxLength = length;
-    //         }
-    //     }
-    //     return maxLength;
-    // }
+
