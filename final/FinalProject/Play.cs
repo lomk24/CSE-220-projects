@@ -20,8 +20,14 @@ public class Play
     static Stopwatch stopwatch = new Stopwatch();
     public void StartGame(CreateNew startGame)
     {
-        Dictionary<string,string> gameDictionary = startGame.GetMyDictionary();
         game = startGame.GetMyDictionary();
+        
+        if(game.Count == 0)
+        {
+            Console.WriteLine("Dictionary is empty, please load a game.");
+            return;
+        }
+
         stopwatch.Start();
         Update();
 

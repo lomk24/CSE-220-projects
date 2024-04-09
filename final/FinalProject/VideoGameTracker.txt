@@ -1,0 +1,3 @@
+Kills:Shotgun,s,0,False,True/Rifle,r,0,False,False/Grenade,g,0,False,False/
+~Deaths:d, 0
+~Revives:t, 0

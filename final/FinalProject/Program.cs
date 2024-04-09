@@ -121,7 +121,7 @@ class Program
                             else if(createMore2 == "n")
                             {
                                 choiceDone = true;
-                            }           
+                            }  
                         break;
                     }
                 }
@@ -150,7 +150,7 @@ class Program
 
                     // Throw in exception catcher
                 }
-
+                newGame.DeleteDictionary();  
                 break;
     
                 case "2":
@@ -158,8 +158,7 @@ class Program
                 Console.Write("What file do you want to load?: ");
                 string loadFileName = Console.ReadLine();
                 LoadAndSave load = new LoadAndSave(loadFileName);
-                load.LoadGame(newGame);
-                // newGame.DisplayDictionary();
+                load.LoadGame(newGame); 
                 break;
 
                 case "3":

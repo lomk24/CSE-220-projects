@@ -12,5 +12,8 @@ For example:
     
     There are subcategories that you can add as well. Instead of having "curls:c", you can have the Category "Arms" with subcategories
     "curls:c", "pushups:p" ect. Each subcategory adds to the main category. Subcategories have a focus option, printing and showing which 
-    one you wanted to focus on. Finally, the program will also print which subcategory you did best at.
+    one you wanted to focus on. Finally, the program will also print which subcategory you did best at. 
 
+I've included some example files that you can use. One is for a video game, and the other is for a workout.
+
+NOTE: One must load the game after creating it, as it is deleted afterwords.
